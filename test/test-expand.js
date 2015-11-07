@@ -35,5 +35,18 @@ describe('komc-util', function () {
         assert.notEqual(b, a[i]);
       }
     });
+
+    it('with modifier', function () {
+      var a = [];
+      var b = {name: 'towry'};
+      expand(a, b, 11, true, function (data, index) {
+        if (index === 3) {
+          data[index].name = "jack";
+        }
+      });
+
+      assert.equal(a[3].name, "jack");
+      assert.equal(a[0].name, "towry");
+    })
   })
 });
